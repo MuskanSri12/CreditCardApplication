@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface CustomerCreditCardrepo extends MongoRepository<Customers, Integer > {
+public interface CustomerCreditCardrepo extends MongoRepository<Customers, String > {
 
 
     @Query("{'firstname':'?0'}")

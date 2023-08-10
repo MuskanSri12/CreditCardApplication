@@ -6,8 +6,10 @@ import java.util.List;
 
 public interface ICustomerCreditCardservice {
 
-    public List<Customers> getAllUsers();
-    public String getFirstName();
+    public List<Customers> getAllCustomers();
+
+    public List<Customers> getCustomerByFirstName(String firstName);
+
     public String addFirstName();
     public String addlastName();
 

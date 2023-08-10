@@ -3,9 +3,11 @@ package com.boot.CreditCardApplication.services;
 import com.boot.CreditCardApplication.entities.Customers;
 import com.boot.CreditCardApplication.repo.CustomerCreditCardrepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CustomerCreditCardService implements ICustomerCreditCardservice{
 
 
@@ -13,12 +15,12 @@ public class CustomerCreditCardService implements ICustomerCreditCardservice{
     private CustomerCreditCardrepo customerrep;
 
     @Override
-    public List<Customers> getAllUsers() {
+    public List<Customers> getAllCustomers() {
         return customerrep.findAll();
     }
 
     @Override
-    public List<Customers> getFirstName(String firstName) {
+    public List<Customers> getCustomerByFirstName(String firstName) {
         return customerrep.findByFirstName(firstName);
     }
 

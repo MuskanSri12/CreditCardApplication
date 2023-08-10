@@ -7,10 +7,10 @@ import java.util.Date;
 @Document("CreditCardUsers")
 public class Customers {
     @Id
-    Integer customer_Id;
+    String customer_Id;
 
-    String firstName;
-    String lastName;
+    String first;
+    String last;
     String gender;
     Date dob;
 
@@ -19,41 +19,41 @@ public class Customers {
 
    }
    public Customers(String firstName,String lastName, Date dob, String gender){
-       this.firstName=firstName;
-       this.lastName=lastName;
+       this.first=firstName;
+       this.last=lastName;
        this.dob=dob;
        this.gender=gender;
    }
-   public Customers(String firstName, String lastName, Date dob, String gender, Integer customer_Id){
-       this.firstName=firstName;
-       this.lastName=lastName;
+   public Customers(String firstName, String lastName, Date dob, String gender, String customer_Id){
+       this.first=firstName;
+       this.last=lastName;
        this.dob=dob;
        this.gender=gender;
        this.customer_Id=customer_Id;
    }
 
-    public Integer getCustomer_Id() {
+    public String getCustomer_Id() {
         return customer_Id;
     }
 
-    public void setCustomer_Id(Integer customer_Id) {
+    public void setCustomer_Id(String customer_Id) {
         this.customer_Id = customer_Id;
     }
 
     public String getFirstName() {
-        return firstName;
+        return first;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.first = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return last;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.last = lastName;
     }
 
     public String getGender() {
