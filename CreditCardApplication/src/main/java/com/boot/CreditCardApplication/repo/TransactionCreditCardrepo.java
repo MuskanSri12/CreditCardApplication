@@ -2,17 +2,18 @@ package com.boot.CreditCardApplication.repo;
 
 
 import com.boot.CreditCardApplication.entities.Customers;
+import com.boot.CreditCardApplication.entities.Transactions;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface CustomerCreditCardrepo extends MongoRepository<Customers, String > {
+public interface TransactionCreditCardrepo extends MongoRepository<Transactions, String > {
     @Query("{'first':'?0'}")
-    List<Customers> findByFirstName(String first);
+    List<Transactions> findByFirstName(String first);
 
     @Query("{'gender':'?0'}")
-    List<Customers> findCustomerByGender(String gender);
+    List<Transactions> findTransactionByGender(String gender);
 
 
 
