@@ -12,8 +12,11 @@ public class CreditCardApplication {
 	public static void main(String[] args) {
 
 		ConfigurableApplicationContext context = SpringApplication.run(CreditCardApplication.class, args);
-		TransactionCreditCardService transactionCreditCardService = context.getBean(TransactionCreditCardService.class);
-		transactionCreditCardService.getAllTransactions();
+//		TransactionCreditCardService transactionCreditCardService = context.getBean(TransactionCreditCardService.class);
+//		transactionCreditCardService.getAllTransactions();
+
+		CustomerCreditCardService customerCreditCardService = context.getBean(CustomerCreditCardService.class);
+		System.out.println(customerCreditCardService.getAllCustomers());
 	}
 
 }

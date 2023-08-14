@@ -1,5 +1,7 @@
 package com.boot.CreditCardApplication.services;
 
+import com.boot.CreditCardApplication.dao.TransactionDALMongoTemplate;
+import com.boot.CreditCardApplication.dto.CityAmt;
 import com.boot.CreditCardApplication.entities.Transactions;
 import com.boot.CreditCardApplication.repo.TransactionCreditCardrepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ public class TransactionCreditCardService implements ITransactionCreditCardServi
 
     @Autowired
     private TransactionCreditCardrepo transactionsrep;
+
+    @Autowired
+    private TransactionDALMongoTemplate transactionDALMongoTemplate;
 
     @Override
     public List<Transactions> getAllTransactions() {
@@ -38,5 +43,11 @@ public class TransactionCreditCardService implements ITransactionCreditCardServi
     @Override
     public String addlastName() {
         return null;
+    }
+
+
+    public List<CityAmt> getCityAmt()
+    {
+        return transactionDALMongoTemplate.getAmtForCity();
     }
 }

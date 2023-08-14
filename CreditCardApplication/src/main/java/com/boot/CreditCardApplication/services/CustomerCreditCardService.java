@@ -28,7 +28,7 @@ public class CustomerCreditCardService implements ICustomerCreditCardService {
 
     @Override
     public List<Customers> getCustomerByFirstName(String firstName) {
-        return customerrep.findByFirstName(firstName);
+        return customerrep.findCustomerByFirst(firstName);
     }
 
     public Customers addCustomer(Customers customer) throws CustomerExistsException

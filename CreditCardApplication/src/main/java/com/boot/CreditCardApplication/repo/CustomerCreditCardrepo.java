@@ -9,11 +9,8 @@ import java.util.List;
 
 public interface CustomerCreditCardrepo extends MongoRepository<Customers, String > {
     @Query("{'first':'?0'}")
-    List<Customers> findByFirstName(String first);
+    List<Customers> findCustomerByFirst(String first);
 
     @Query("{'gender':'?0'}")
     List<Customers> findCustomerByGender(String gender);
-
-
-
 }

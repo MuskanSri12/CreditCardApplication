@@ -1,6 +1,7 @@
 package com.boot.CreditCardApplication.controller;
 
 
+import com.boot.CreditCardApplication.dto.CityAmt;
 import com.boot.CreditCardApplication.entities.Transactions;
 import com.boot.CreditCardApplication.services.TransactionCreditCardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +45,12 @@ public class TransactionController {
             return null;
         }
     }
+
+    @GetMapping("/city")
+    public List<CityAmt> getTransactionAmtByCity()
+    {
+       return transactionCreditCardService.getCityAmt();
+    }
+
+
 }
