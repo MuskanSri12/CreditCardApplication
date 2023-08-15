@@ -15,6 +15,4 @@ public interface TransactionCreditCardrepo extends MongoRepository<Transactions,
     @Query("{'gender':'?0'}")
     List<Transactions> findTransactionByGender(String gender);
 
-
-
 }

@@ -1,7 +1,7 @@
 package com.boot.CreditCardApplication.services;
 
 import com.boot.CreditCardApplication.dao.TransactionDALMongoTemplate;
-import com.boot.CreditCardApplication.dto.CityAmt;
+import com.boot.CreditCardApplication.dto.*;
 import com.boot.CreditCardApplication.entities.Transactions;
 import com.boot.CreditCardApplication.repo.TransactionCreditCardrepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import java.util.List;
 
 @Service
 public class TransactionCreditCardService implements ITransactionCreditCardService{
-
 
     @Autowired
     private TransactionCreditCardrepo transactionsrep;
@@ -46,8 +45,26 @@ public class TransactionCreditCardService implements ITransactionCreditCardServi
     }
 
 
-    public List<CityAmt> getCityAmt()
+    public List<SpendingByCity> getCityAmt()
     {
         return transactionDALMongoTemplate.getAmtForCity();
+    }
+
+
+    //spendiing by Gender
+    public List<SpendingByGender> getSpendingForGender(){
+        return transactionDALMongoTemplate.getSpendingByGender();
+    }
+
+    public List<SpendingByMerchant> getSpendingForMerchant() {
+        return transactionDALMongoTemplate.getSpendingByMerchant();
+    }
+
+    public List<SpendingByState> getSpendingForState() {
+        return transactionDALMongoTemplate.getSpendingByState();
+    }
+
+    public List<SpendingByCategory> getSpendingForCategory() {
+        return transactionDALMongoTemplate.getSpendingByCategory();
     }
 }

@@ -1,7 +1,7 @@
 package com.boot.CreditCardApplication.controller;
 
 
-import com.boot.CreditCardApplication.dto.CityAmt;
+import com.boot.CreditCardApplication.dto.*;
 import com.boot.CreditCardApplication.entities.Transactions;
 import com.boot.CreditCardApplication.services.TransactionCreditCardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,25 +32,48 @@ public class TransactionController {
         }
     }
 
-    @GetMapping("/{gender}")
-    public List<Transactions> getTransactionByGender(@PathVariable String gender)
-    {
-        try {
-            List<Transactions> transactions = this.transactionCreditCardService.getTransactionByGender(gender);
-//            return ResponseEntity.status(HttpStatus.FOUND).body(customers);
-            return transactions;
-        } catch (Exception e) {
-            // throw new RuntimeException(e);
-//            return ResponseEntity.noContent().build();
-            return null;
-        }
-    }
+//    @GetMapping("/{gender}")
+//    public List<Transactions> getTransactionByGender(@PathVariable String gender)
+//    {
+//        try {
+//            List<Transactions> transactions = this.transactionCreditCardService.getTransactionByGender(gender);
+////            return ResponseEntity.status(HttpStatus.FOUND).body(customers);
+//            return transactions;
+//        } catch (Exception e) {
+//            // throw new RuntimeException(e);
+////            return ResponseEntity.noContent().build();
+//            return null;
+//        }
+//    }
 
+    //spending by city
     @GetMapping("/city")
-    public List<CityAmt> getTransactionAmtByCity()
+    public List<SpendingByCity> getTransactionAmtByCity()
     {
-       return transactionCreditCardService.getCityAmt();
+        return transactionCreditCardService.getCityAmt();
     }
 
+    //spending for gender
+
+    @GetMapping("/gender")
+    public List<SpendingByGender> getTransactionAmtByGender(){
+        return transactionCreditCardService.getSpendingForGender();
+    }
+    //spending by merchant
+    @GetMapping("/merchant")
+    public List<SpendingByMerchant> getTransactionAmtByMerchant(){
+        return transactionCreditCardService.getSpendingForMerchant();
+    }
+    //spending by state
+    @GetMapping("/state")
+    public List<SpendingByState> getTransactionAmtByState(){
+        return transactionCreditCardService.getSpendingForState();
+    }
+
+    //spending by category
+    @GetMapping("/category")
+    public List<SpendingByCategory> getTransactionAmtByCategory(){
+        return transactionCreditCardService.getSpendingForCategory();
+    }
 
 }

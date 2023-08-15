@@ -8,7 +8,6 @@ import java.util.Date;
 public class Customers {
     @Id
     String customer_Id;
-
     String first;
     String last;
     String gender;
