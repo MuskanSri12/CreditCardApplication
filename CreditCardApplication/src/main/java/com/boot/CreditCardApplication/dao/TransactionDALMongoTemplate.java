@@ -82,4 +82,19 @@ public class TransactionDALMongoTemplate {
         List<SpendingByCategory> result = groupResults.getMappedResults();
         return result;
     }
+
+    public List<SpendingByProfession> getSpendingByProfession() {
+        GroupOperation groupByProfessionSumAmt = group("Job").sum("amt").as("totalAmt"); //check for total amt
+        MatchOperation allProfession= match(new Criteria("Job").exists(true));
+        ProjectionOperation includes = project("totalAmt").and("Job").previousOperation();
+        SortOperation sortByAmtDesc = sort(Sort.by(Sort.Direction.DESC, "totalAmt"));
+        Aggregation aggregation = newAggregation(allProfession, groupByProfessionSumAmt, sortByAmtDesc, includes);
+        AggregationResults<SpendingByProfession> groupResults = mongoTemplate.aggregate(aggregation, "CreditCardTransactions", SpendingByProfession.class);
+        List<SpendingByProfession> result = groupResults.getMappedResults();
+        return result;
+    }
+
+  //function need to be written
+    //public List<GroupingByAmountOfSpending> getSpendingByAmountLowVsHigh(){}
 }
+

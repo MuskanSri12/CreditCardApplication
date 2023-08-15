@@ -76,4 +76,13 @@ public class TransactionController {
         return transactionCreditCardService.getSpendingForCategory();
     }
 
+    @GetMapping("/Job")
+    public List<SpendingByProfession> getTransactionAmtByProfession(){
+        return transactionCreditCardService.getSpendingForProfession();
+    }
+    @GetMapping("/AmountBySpending(low vs high)")
+    public List<GroupingByAmountOfSpending> getTransactionAmountByLowVsHigh(){
+        return  transactionCreditCardService.getSpendingByAmountLowVsHigh();
+    }
+
 }
