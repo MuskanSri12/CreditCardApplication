@@ -1,0 +1,13 @@
+/* NavigationPage.css */
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease;
+  
+}
+
+/* Optional: Style for changing text color on hover */
+.nav-item:hover .nav-link {
+  color: #fff;
+  transition: color 0.3s ease;
+  font-size: large;
+}

@@ -1,0 +1,6 @@
+.gradient-background {
+  width: 100%; /* Adjust width as needed */
+  height: 100vh; /* Adjust height as needed */
+  background: linear-gradient(to bottom, #04467fe2, #1170a0c9);
+  /* Adjust gradient colors as needed */
+}
