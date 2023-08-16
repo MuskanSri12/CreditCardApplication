@@ -20,6 +20,8 @@ public interface ICustomerCreditCardService {
 
     public List<Customers> getCustomerByFirstName(String firstName);
 
+    public Customers getCustomerById(String custid) throws CustomerNotFoundException;
+
     public String addFirstName();
     public String addlastName();
 

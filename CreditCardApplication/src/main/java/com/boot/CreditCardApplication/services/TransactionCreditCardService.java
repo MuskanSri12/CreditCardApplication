@@ -72,7 +72,7 @@ public class TransactionCreditCardService implements ITransactionCreditCardServi
         return transactionDALMongoTemplate.getSpendingByProfession();
     }
 
-    public List<GroupingByAmountOfSpending> getSpendingByAmountLowVsHigh() {
-        return transactionDALMongoTemplate.getSpendingByAmountLowVsHigh();
-    }
+//    public List<GroupingByAmountOfSpending> getSpendingByAmountLowVsHigh() {
+//        return transactionDALMongoTemplate.getSpendingByAmountLowVsHigh();
+//    }
 }

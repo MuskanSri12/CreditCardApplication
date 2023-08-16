@@ -30,7 +30,17 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/{gender}")
+    @GetMapping("/{customer_Id}")
+    public Customers getCustomerById(@PathVariable("customer_Id") String customer_Id)
+    {
+        try {
+            return this.customerCreditCardService.getCustomerById(customer_Id);
+        } catch (CustomerNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/gender/{gender}")
     public List<Customers> getCustomerByGender(@PathVariable String gender)
     {
         try {

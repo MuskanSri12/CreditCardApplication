@@ -31,6 +31,14 @@ public class CustomerCreditCardService implements ICustomerCreditCardService {
         return customerrep.findCustomerByFirst(firstName);
     }
 
+    @Override
+    public Customers getCustomerById(String custid) throws CustomerNotFoundException {
+        if(customerrep.existsById(custid))
+        return customerrep.findCustomerByCustomer_Id(custid);
+        else
+            return null;
+    }
+
     public Customers addCustomer(Customers customer) throws CustomerExistsException
     {
         if(customerrep.existsById(customer.getCustomer_Id()))

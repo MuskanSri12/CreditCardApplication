@@ -13,4 +13,7 @@ public interface CustomerCreditCardrepo extends MongoRepository<Customers, Strin
 
     @Query("{'gender':'?0'}")
     List<Customers> findCustomerByGender(String gender);
+
+    @Query("{'customer_Id':'?0'}")
+    Customers findCustomerByCustomer_Id(String customer_Id);
 }
