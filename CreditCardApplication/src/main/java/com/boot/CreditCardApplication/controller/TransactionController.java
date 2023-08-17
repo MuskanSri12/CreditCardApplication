@@ -80,6 +80,13 @@ public class TransactionController {
     public List<SpendingByProfession> getTransactionAmtByProfession(){
         return transactionCreditCardService.getSpendingForProfession();
     }
+
+    @GetMapping("/spendingByAmt/{low}/{high}")
+    public List<SpendingAnalysis> getSpendingByAmt(@PathVariable double low, @PathVariable double high){
+        return transactionCreditCardService.getSpendingByAmount(low, high);
+
+    }
+
 //    @GetMapping("/AmountBySpending(low vs high)")
 //    public List<GroupingByAmountOfSpending> getTransactionAmountByLowVsHigh(){
 //        return  transactionCreditCardService.getSpendingByAmountLowVsHigh();

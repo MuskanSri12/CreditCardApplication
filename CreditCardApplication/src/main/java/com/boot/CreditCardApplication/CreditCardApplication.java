@@ -9,8 +9,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.logging.Logger;
+
 @SpringBootApplication
 public class CreditCardApplication {
+
+	Logger logger = Logger.getLogger(CreditCardApplication.class.getSimpleName());
 
 	public static void main(String[] args) {
 

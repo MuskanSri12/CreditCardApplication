@@ -11,12 +11,12 @@ public class SpendingByCity {
         this.city = city;
     }
 
-    public Double getAmt() {
+    public Double getTotalAmt() {
         return totalAmt;
     }
 
-    public void setAmt(Double amt) {
-        this.totalAmt = amt;
+    public void setTotalAmt(Double totalAmt) {
+        this.totalAmt = totalAmt;
     }
 
     private Double totalAmt;

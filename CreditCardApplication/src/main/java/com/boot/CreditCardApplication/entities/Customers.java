@@ -1,5 +1,8 @@
 package com.boot.CreditCardApplication.entities;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,28 +11,32 @@ import java.util.Date;
 public class Customers {
     @Id
     String customer_Id;
+    @NotBlank(message = "Enter first name")
     String first;
+    @NotBlank(message = "Enter last name")
     String last;
+    @NotNull
     String gender;
+    @NotNull
     Date dob;
 
 
-   public Customers(){
+    public Customers(){
 
-   }
-   public Customers(String firstName,String lastName, Date dob, String gender){
-       this.first=firstName;
-       this.last=lastName;
-       this.dob=dob;
-       this.gender=gender;
-   }
-   public Customers(String firstName, String lastName, Date dob, String gender, String customer_Id){
-       this.first=firstName;
-       this.last=lastName;
-       this.dob=dob;
-       this.gender=gender;
-       this.customer_Id=customer_Id;
-   }
+    }
+    public Customers(String firstName,String lastName, Date dob, String gender){
+        this.first=firstName;
+        this.last=lastName;
+        this.dob=dob;
+        this.gender=gender;
+    }
+    public Customers(String firstName, String lastName, Date dob, String gender, String customer_Id){
+        this.first=firstName;
+        this.last=lastName;
+        this.dob=dob;
+        this.gender=gender;
+        this.customer_Id=customer_Id;
+    }
 
     public String getCustomer_Id() {
         return customer_Id;

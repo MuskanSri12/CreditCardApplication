@@ -1,26 +1,41 @@
 package com.boot.CreditCardApplication.entities;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 @Document("CreditCardTransactions")
 public class Transactions {
     @Id
     String transaction_Id;
+    @NotNull
     String trans_date_trans_time;
+    @NotNull
     Double amt;
+    @NotNull
     int trans_num;
+    @NotNull
     int customer_id;
+    @NotBlank(message = "City cannot be blank")
     String city;
+    @NotBlank(message = "State cannot be blank")
     String state;
+    @NotBlank(message = "City population cannot be blank")
     int city_population;
-   String merchant;
-   String category;
-   String first;
-
+    @NotBlank(message = "Merchant cannot be blank")
+    String merchant;
+    @NotBlank(message = "Category cannot be blank")
+    String category;
+    @NotBlank(message = "First name cannot be blank")
+    String first;
+    @NotBlank(message = "Last name cannot be blank")
     String last;
+    @NotBlank(message = "Gender cannot be blank")
     String gender;
+    @NotBlank(message = "Job cannot be blank")
     String Job;
 
     public Transactions(String transaction_Id, String trans_date_trans_time, Double amt, int trans_num, int customer_id, String city, String state, int city_population, String merchant, String category, String first, String last, String gender, String Job, String dob) {
@@ -41,6 +56,9 @@ public class Transactions {
         this.dob = dob;
     }
 
+//    public Transactions(String trans1, String last1, Date date, String m, String s) {
+//
+//    }
 
 
     public String getTransaction_Id() {

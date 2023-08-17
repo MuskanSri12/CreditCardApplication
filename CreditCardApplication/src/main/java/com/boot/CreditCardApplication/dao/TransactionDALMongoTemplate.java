@@ -1,12 +1,16 @@
 package com.boot.CreditCardApplication.dao;
 
 import com.boot.CreditCardApplication.dto.*;
+import com.boot.CreditCardApplication.entities.Transactions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
@@ -82,7 +86,6 @@ public class TransactionDALMongoTemplate {
         List<SpendingByCategory> result = groupResults.getMappedResults();
         return result;
     }
-
     public List<SpendingByProfession> getSpendingByProfession() {
         GroupOperation groupByProfessionSumAmt = group("Job").sum("amt").as("totalAmt"); //check for total amt
         MatchOperation allProfession= match(new Criteria("Job").exists(true));
@@ -94,7 +97,17 @@ public class TransactionDALMongoTemplate {
         return result;
     }
 
-  //function need to be written
-    //public List<GroupingByAmountOfSpending> getSpendingByAmountLowVsHigh(){}
+    public List<SpendingAnalysis> getSpendingByAmount(double lowVal,double highVal){
+        Criteria amtCriteria = Criteria.where("amt").gte(lowVal).lte(highVal);
+        Query query = new Query(amtCriteria).with(Sort.by(Sort.Direction.DESC, "amt"));
+        List<SpendingAnalysis> amtSpending = new ArrayList<>();
+        List<Transactions> transactions = mongoTemplate.find(query, Transactions.class);
+        for(Transactions transaction : transactions){
+            SpendingAnalysis spendingAnalysis = new SpendingAnalysis();
+            spendingAnalysis.setCustomerId(transaction.getCustomer_id());
+            spendingAnalysis.setTotalAmt(transaction.getAmt());
+            amtSpending.add(spendingAnalysis);
+        }
+        return amtSpending;
+    }
 }
-

@@ -33,16 +33,15 @@ public class CustomerCreditCardService implements ICustomerCreditCardService {
 
     @Override
     public Customers getCustomerById(String custid) throws CustomerNotFoundException {
-        if(customerrep.existsById(custid))
-        return customerrep.findCustomerByCustomer_Id(custid);
-        else
-            return null;
+//        if(customerrep.existsById(custid))
+            return customerrep.findCustomerByCustomer_Id(custid);
+
     }
 
     public Customers addCustomer(Customers customer) throws CustomerExistsException
     {
         if(customerrep.existsById(customer.getCustomer_Id()))
-            throw new CustomerExistsException("Employee with "+customer.getCustomer_Id()+"already exists");
+            throw new CustomerExistsException("Customer with "+customer.getCustomer_Id()+"already exists");
         long count = this.customerrep.count();
         customer.setCustomer_Id(String.valueOf(count+1));
         Customers savedCust = customerrep.save(customer);

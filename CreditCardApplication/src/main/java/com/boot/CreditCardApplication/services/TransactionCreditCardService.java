@@ -5,8 +5,10 @@ import com.boot.CreditCardApplication.dto.*;
 import com.boot.CreditCardApplication.entities.Transactions;
 import com.boot.CreditCardApplication.repo.TransactionCreditCardrepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
+import javax.management.Query;
 import java.util.List;
 
 @Service
@@ -51,7 +53,7 @@ public class TransactionCreditCardService implements ITransactionCreditCardServi
     }
 
 
-    //spendiing by Gender
+    //spending by Gender
     public List<SpendingByGender> getSpendingForGender(){
         return transactionDALMongoTemplate.getSpendingByGender();
     }
@@ -67,12 +69,14 @@ public class TransactionCreditCardService implements ITransactionCreditCardServi
     public List<SpendingByCategory> getSpendingForCategory() {
         return transactionDALMongoTemplate.getSpendingByCategory();
     }
-
     public List<SpendingByProfession> getSpendingForProfession() {
         return transactionDALMongoTemplate.getSpendingByProfession();
     }
+//    public List<Transactions> getAllTransactionByRange(double from, double to) {
+//        return this.transactionsrep.findTransactionInRange(from, to);
 
-//    public List<GroupingByAmountOfSpending> getSpendingByAmountLowVsHigh() {
-//        return transactionDALMongoTemplate.getSpendingByAmountLowVsHigh();
-//    }
+    public List<SpendingAnalysis> getSpendingByAmount(double low, double high) {
+        return transactionDALMongoTemplate.getSpendingByAmount(low,high);
+    }
+
 }
