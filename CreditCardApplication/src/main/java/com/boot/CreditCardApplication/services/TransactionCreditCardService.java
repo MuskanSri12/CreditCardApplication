@@ -78,5 +78,13 @@ public class TransactionCreditCardService implements ITransactionCreditCardServi
     public List<SpendingAnalysis> getSpendingByAmount(double low, double high) {
         return transactionDALMongoTemplate.getSpendingByAmount(low,high);
     }
-
+    public List<Transactions> getTransactionByMerchant(String merchant) {
+        return transactionsrep.findTransactionByMerchant(merchant);
+    }
+    public List<Transactions> getTransactionByCity(String city) {
+        return transactionsrep.findTransactionByCity(city);
+    }
+    public List<Transactions> getTransactionByCategory(String category) {
+        return transactionsrep.findTransactionByCategory(category);
+    }
 }
